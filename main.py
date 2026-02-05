@@ -232,5 +232,13 @@ def serve_onion():
 def serve_one():
     return send_from_directory('.', 'one.jpg')
 
+@app.route('/web.css')
+def serve_css():
+    return send_from_directory('.', 'web.css')
+
+@app.route('/web.js')
+def serve_js():
+    return send_from_directory('.', 'web.js')
+
 if __name__ == '__main__':
-    socketio.run(app, debug=True, host='0.0.0.0', port=5000)
+    socketio.run(app, debug=True, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
